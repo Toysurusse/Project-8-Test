@@ -81,7 +81,7 @@ public final class SpringRegistry {
      * @return {@link BusinessProxy}
      */
     public static BusinessProxy getBusinessProxy() {
-        return (BusinessProxy) SpringRegistry.getBean("BusinessProxy");
+        return (BusinessProxy) SpringRegistry.getBean("businessProxy");
     }
 
 
@@ -91,6 +91,6 @@ public final class SpringRegistry {
      * @return {@link TransactionManager}
      */
     public static TransactionManager getTransactionManager() {
-        return (TransactionManager) SpringRegistry.getBean("TransactionManager");
+        return (TransactionManager) SpringRegistry.getBean("transactionManager");
     }
 }
