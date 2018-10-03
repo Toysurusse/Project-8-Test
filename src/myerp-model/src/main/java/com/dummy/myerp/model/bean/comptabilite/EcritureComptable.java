@@ -116,7 +116,13 @@ public class EcritureComptable {
         System.out.println(this.getTotalDebit());
         System.out.println(this.getTotalCredit());
         System.out.println(getTotalCredit());
-        boolean vRetour = this.getTotalDebit().equals(getTotalCredit());
+        boolean vRetour;
+        if(this.getTotalDebit().compareTo(getTotalCredit())==0){
+            vRetour=true;
+        }
+        else {
+            vRetour=false;
+        }
         return vRetour;
     }
 
