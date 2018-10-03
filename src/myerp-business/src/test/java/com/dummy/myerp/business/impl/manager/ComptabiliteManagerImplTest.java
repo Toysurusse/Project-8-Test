@@ -77,4 +77,9 @@ public class ComptabiliteManagerImplTest {
         assertThrows(FunctionalException.class, () -> manager.checkEcritureComptableUnit(vEcritureComptable));
     }
 
+    @Test
+    void checkEcritureComptableUnitRG5() {
+        assertThrows(FunctionalException.class, () -> manager.checkEcritureComptableUnit(vEcritureComptable));
+    }
+
 }

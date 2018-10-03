@@ -31,7 +31,7 @@ class EcritureComptableTest {
         vEcriture.getListLigneEcriture().add(this.createLigne(2, null, "301"));
         vEcriture.getListLigneEcriture().add(this.createLigne(2, "40", "7"));
         assertTrue(vEcriture.isEquilibree(), vEcriture.toString());
-        System.out.println("Test 1 : True "+vEcriture.isEquilibree());
+        System.out.println("Test IsEquilibree : True "+vEcriture.isEquilibree());
         System.out.println(vEcriture.toString());
 
         vEcriture.getListLigneEcriture().clear();
@@ -41,7 +41,7 @@ class EcritureComptableTest {
         vEcriture.getListLigneEcriture().add(this.createLigne(2, null, "30"));
         vEcriture.getListLigneEcriture().add(this.createLigne(2, "1", "2"));
         assertFalse(vEcriture.isEquilibree(), vEcriture.toString());
-        System.out.println("Test 2 : False "+vEcriture.isEquilibree());
+        System.out.println("Test IsEquilibree : False "+vEcriture.isEquilibree());
         System.out.println(vEcriture.toString());
     }
 
@@ -49,8 +49,21 @@ class EcritureComptableTest {
     void getReference() {
         EcritureComptable vEcriture;
         vEcriture = new EcritureComptable();
-        vEcriture.setReference("AZ-2018/01234");
+        vEcriture.setReference("CL-2018/01234");
         assertTrue(vEcriture.getReference().matches("[A-Z]{2}-\\d{4}/\\d{5}"), "1-The reference doesn't matches with the pattern \"XX-AAAA/#####\"");
-        System.out.println("Test 3 :"+vEcriture.getReference()+" matches with the pattern [A-Z]{2}-\\d{4}/\\d{5}");
+        System.out.println("Test getRef :"+vEcriture.getReference()+" matches with the pattern [A-Z]{2}-\\d{4}/\\d{5}");
     }
+
+    @Test
+    void referenceCodeEqualJournalCode() {
+        EcritureComptable vEcriture;
+        vEcriture = new EcritureComptable();
+        vEcriture.setJournal(new JournalComptable("CL", "Client"));
+        vEcriture.setReference("CL-2018/01234");
+        assertTrue(
+                vEcriture.getReference().substring(0, 2).equals(vEcriture.getJournal().getCode()),
+                vEcriture.toString());
+    }
+
+
 }
